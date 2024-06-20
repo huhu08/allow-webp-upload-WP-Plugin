@@ -39,4 +39,26 @@ function check_webp_upload($file, $filename, $mimes) {
     return $file;
 }
 add_filter('wp_check_filetype_and_ext', 'check_webp_upload', 10, 3);
+/**
+ * Skip image processing for WebP images.
+ *
+ * @param array $metadata Image metadata.
+ * @param int $attachment_id Attachment ID.
+ * @return array Modified image metadata.
+ */
+function skip_webp_image_processing($metadata, $attachment_id) {
+    $mime = get_post_mime_type($attachment_id);
+    if ($mime === 'image/webp') {
+        // Return minimal metadata for WebP images
+        return [
+            'width' => 0,
+            'height' => 0,
+            'file' => get_attached_file($attachment_id),
+            'sizes' => [],
+            'image_meta' => []
+        ];}
+    return $metadata;
+}
+add_filter('wp_generate_attachment_metadata', 'skip_webp_image_processing', 10, 2);
+
  ?>
