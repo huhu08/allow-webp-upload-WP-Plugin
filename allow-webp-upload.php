@@ -6,7 +6,10 @@
  * Author: Huda Taha
  */
 
-
+ if (!defined('ABSPATH')) {
+         exit;
+     }
+     
  
  //enable upload for webp image files.
 function webp_upload_mimes($existing_mimes) {
@@ -34,10 +37,7 @@ function webp_is_displayable($result, $path) {
 }
 add_filter('file_is_displayable_image', 'webp_is_displayable', 10, 2);
 //  // If this file is called directly, abort.
-//  if (!defined('ABSPATH')) {
-//      exit;
-//  }
- 
+//  
 //  /**
 //   * Add webp to the list of allowed mime types
 //   *
