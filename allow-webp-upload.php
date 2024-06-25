@@ -36,20 +36,20 @@ function webp_is_displayable($result, $path) {
     return $result;
 }
 add_filter('file_is_displayable_image', 'webp_is_displayable', 10, 2);
-//  // If this file is called directly, abort.
-//  
-//  /**
-//   * Add webp to the list of allowed mime types
-//   *
-//   * @param array $mimes Existing list of mime types.
-//   * @return array Modified list of mime types.
-//   */
-//  function allow_webp_upload_mimes($mimes) {
-//      // Add webp to the list of mime types
-//      $mimes['webp'] = 'image/webp';
-//      return $mimes;
-//  }
-//  add_filter('upload_mimes', 'allow_webp_upload_mimes');
+ // If this file is called directly, abort.
+ 
+ /**
+  * Add webp to the list of allowed mime types
+  *
+  * @param array $mimes Existing list of mime types.
+  * @return array Modified list of mime types.
+  */
+ function allow_webp_upload_mimes($mimes) {
+     // Add webp to the list of mime types
+     $mimes['webp'] = 'image/webp';
+     return $mimes;
+ }
+ add_filter('upload_mimes', 'allow_webp_upload_mimes');
  
 //  /**
 //   * Add webp to the list of allowed file types in the media library
